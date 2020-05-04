@@ -33,7 +33,7 @@ I WANT a README generator
 SO THAT I can easily put together a good README for a new project
 ```
 
-Refer to the [Good README guide](../../01-HTML-Git-CSS/04-Supplemental/Good-README-Guide/README.md).
+Refer to the [Good README guide](../../UofU-SAN-FSF-PT-02-2020-U-C/01-HTML-Git-CSS/04-Supplemental/Good-README-Guide/README.md).
 
 ## Business Context
 
