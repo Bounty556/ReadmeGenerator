@@ -59,6 +59,9 @@ function start() {
 function getRepoInfo(response, repoName) {
     let foundRepo = null;
 
+    // Remove any spaces from the repoName
+    repoName = repoName.replace(/ /g, '').trim();
+
     // Try to find repo with given name
     for (repo of response.data) {
         if (repo.name.toLowerCase() == repoName.toLowerCase()) {
