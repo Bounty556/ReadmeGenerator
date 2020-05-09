@@ -95,8 +95,8 @@ function generateReadMe(repo) {
 
     let readme = '';
 
-    // Generate a badge
-    readme += `https://badgen.net/badge/language/${repo.language.toLowerCase()}/purple\n`;
+    // Generate language badge
+    readme += `![Language](https://badgen.net/badge/language/${repo.language.toLowerCase()}/purple) ![Commits](https://badgen.net/github/commits/micromatch/micromatch) ![LastCommit](https://badgen.net/github/last-commit/micromatch/micromatch)\n`;
 
     // Add Title
     readme += `\n# ${formatTitle(repo.name)}\n`;
@@ -129,7 +129,8 @@ function generateReadMe(repo) {
     readme += `\n## Tests\nInstructions on running automated tests here\n`;
 
     // Questions
-    readme += `\n## Questions\nWhere can the user go should they have any inquiries?\n`;
+    readme += `\n## Questions\nInquiries? Send them to:
+    * ![Github](${repo.owner.avatar_url}) {your email}\n`;
 
     writeToFile(repo.name + '.md', readme);
 }
