@@ -95,8 +95,8 @@ function generateReadMe(repo) {
 
     let readme = '';
 
-    // Generate language badge
-    readme += `![Language](https://badgen.net/badge/language/${repo.language.toLowerCase()}/purple) ![Commits](https://badgen.net/github/commits/micromatch/micromatch) ![LastCommit](https://badgen.net/github/last-commit/micromatch/micromatch)\n`;
+    // Generate badges
+    readme += `![Language](https://img.shields.io/badge/language-${repo.language.toLowerCase()}-blue) ![LastCommit](https://img.shields.io/github/last-commit/${repo.owner.login}/${repo.name}?style=flat-square) ![CommitActivity](https://img.shields.io/github/commit-activity/m/${repo.owner.login}/${repo.name})\n`;
 
     // Add Title
     readme += `\n# ${formatTitle(repo.name)}\n`;
@@ -130,8 +130,9 @@ function generateReadMe(repo) {
 
     // Questions
     readme += `\n## Questions\nInquiries? Send them to:
-    * ![Github](${repo.owner.avatar_url}) {your email}\n`;
+    * ![Github](${repo.owner.avatar_url}&s=32) {your email}\n`;
 
+    // Write all content to readme
     writeToFile(repo.name + '.md', readme);
 }
 
