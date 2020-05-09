@@ -70,9 +70,9 @@ function getRepoInfo(response, repoName) {
         }
     }
 
+    // Re-ask the user what the repo is if none are found with the given name
     if (foundRepo == null) {
         console.log(`I'm sorry, I didn't find any repos in your Github account with that name!`);
-        // Re-ask the user what the repo should
         return inquireRepo(response);
     }
 
@@ -80,10 +80,10 @@ function getRepoInfo(response, repoName) {
 }
 
 function inquireRepo(response) {
-    // Ask users the predefined questions
+    // Ask _only_ the repo name - we already got their username before
     inquirer.prompt(repoQuestion)
         .then(answers => {
-            // Save the username and repo given by the user
+            // Save the repo given by the user
             const {repo} = answers;
 
             getRepoInfo(response, repo);
@@ -98,7 +98,7 @@ function generateReadMe(repo) {
 
     let readme = '';
 
-    // Generate badges
+    // Generate badges for used language, last commit, and commit activity for this repo
     readme += `![Language](https://img.shields.io/badge/language-${repo.language.toLowerCase()}-blue) ![LastCommit](https://img.shields.io/github/last-commit/${repo.owner.login}/${repo.name}?style=flat-square) ![CommitActivity](https://img.shields.io/github/commit-activity/m/${repo.owner.login}/${repo.name})\n`;
 
     // Add Title
@@ -144,6 +144,7 @@ function formatTitle(repoTitle) {
     // so 'thisTitle' becomes ['this', 'Title']
     words = repoTitle.split(/(?=[A-Z])/);
 
+    // Make the first letter of each word capitalized
     for (let i = 0; i < words.length; i++) {
         let word = words[i];
         let upperChar = word.charAt(0).toUpperCase();
