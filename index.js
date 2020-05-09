@@ -15,6 +15,16 @@ const questions = [
     }
 ];
 
+const repoQuestion = [
+    {
+        type: 'input',
+        name: 'repo',
+        message: 'What is the name or URL of the repository you wish to generate a README for?'
+    }
+];
+
+var githubUser;
+
 start();
 
 function writeToFile(fileName, data) {
@@ -29,8 +39,9 @@ function start() {
         .then(answers => {
             // Save the username and repo given by the user
             const {username, repo} = answers;
+            githubUser = username;
 
-            const githubURL = `https://api.github.com/users/${username}/repos?per_page=100`;
+            const githubURL = `https://api.github.com/users/${githubUser}/repos?per_page=100`;
 
             axios.get(githubURL)
                 .then(response => {
@@ -56,7 +67,27 @@ function getRepoInfo(response, repoName) {
         }
     }
 
+    if (foundRepo == null) {
+        console.log(`I'm sorry, I didn't find any repos in your Github account with that name!`);
+        // Re-ask the user what the repo should
+        return inquireRepo(response);
+    }
+
     generateReadMe(foundRepo);
+}
+
+function inquireRepo(response) {
+    // Ask users the predefined questions
+    inquirer.prompt(repoQuestion)
+        .then(answers => {
+            // Save the username and repo given by the user
+            const {repo} = answers;
+
+            getRepoInfo(response, repo);
+        })
+        .catch(error => {
+            throw error;
+        });
 }
 
 function generateReadMe(repo) {
@@ -65,7 +96,7 @@ function generateReadMe(repo) {
     let readme = '';
 
     // Generate a badge
-    readme += `https://badgen.net/badge/language/${repo.language.toLowerCase()}/purple`;
+    readme += `https://badgen.net/badge/language/${repo.language.toLowerCase()}/purple\n`;
 
     // Add Title
     readme += `\n# ${formatTitle(repo.name)}\n`;
