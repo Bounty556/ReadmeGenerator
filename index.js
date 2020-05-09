@@ -135,8 +135,13 @@ function generateReadMe(repo) {
     readme += `\n## Questions\nInquiries? Send them to:
     * ![Github](${repo.owner.avatar_url}&s=32) {your email}\n`;
 
+    // Make sure we have our readmes folder
+    if (!fs.existsSync('readmes')){
+        fs.mkdirSync('readmes');
+    }
+
     // Write all content to readme
-    writeToFile(repo.name + '.md', readme);
+    writeToFile('readmes/' + repo.name + '.md', readme);
 }
 
 function formatTitle(repoTitle) {
