@@ -56,5 +56,64 @@ function getRepoInfo(response, repoName) {
         }
     }
 
-    console.log(foundRepo);
+    generateReadMe(foundRepo);
+}
+
+function generateReadMe(repo) {
+    console.log(repo);
+
+    let readme = '';
+
+    // Generate a badge
+    readme += `https://badgen.net/badge/language/${repo.language.toLowerCase()}/purple`;
+
+    // Add Title
+    readme += `\n# ${formatTitle(repo.name)}\n`;
+
+    // Project description
+    readme += `\n## Description\n${repo.description || 'Description of project here'}\n`;
+
+    // Table of contents
+    readme += `\n## Table of Contents
+    * [Installation](#installation)
+    * [Usage](#usage)
+    * [License](#license)
+    * [Contributing](#contributing)
+    * [Tests](#tests)
+    * [Questions](#questions)\n`;
+    
+    // Installation
+    readme += `\n## Installation\nInstallation instructions here\n`;
+
+    // Usage
+    readme += `\n## Usage\nUsage instructions here\n`;
+
+    // License
+    readme += `\n## License\nEasy way to choose your license: https://choosealicense.com/\n`;
+
+    // Contributing
+    readme += `\n## Contributing\nContribution instructions here\n`;
+
+    // Tests
+    readme += `\n## Tests\nInstructions on running automated tests here\n`;
+
+    // Questions
+    readme += `\n## Questions\nWhere can the user go should they have any inquiries?\n`;
+
+    writeToFile(repo.name + '.md', readme);
+}
+
+function formatTitle(repoTitle) {
+    // Split word up by capital letters
+    // so 'thisTitle' becomes ['this', 'Title']
+    words = repoTitle.split(/(?=[A-Z])/);
+
+    for (let i = 0; i < words.length; i++) {
+        let word = words[i];
+        let upperChar = word.charAt(0).toUpperCase();
+        newWord = upperChar + word.substr(1);
+        words[i] = newWord;
+    }
+
+    return words.join(' ');
 }
