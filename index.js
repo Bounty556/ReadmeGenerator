@@ -19,7 +19,7 @@ const repoQuestion = [
     {
         type: 'input',
         name: 'repo',
-        message: 'What is the name or URL of the repository you wish to generate a README for?'
+        message: 'Try inputting the name or URL of another repository:'
     }
 ];
 
@@ -39,7 +39,7 @@ function start() {
         .then(answers => {
             // Save the username and repo given by the user
             const {username, repo} = answers;
-            githubUser = username;
+            githubUser = username.trim();
 
             const githubURL = `https://api.github.com/users/${githubUser}/repos?per_page=100`;
 
@@ -94,8 +94,6 @@ function inquireRepo(response) {
 }
 
 function generateReadMe(repo) {
-    console.log(repo);
-
     let readme = '';
 
     // Generate badges for used language, last commit, and commit activity for this repo
@@ -142,6 +140,8 @@ function generateReadMe(repo) {
 
     // Write all content to readme
     writeToFile('readmes/' + repo.name + '.md', readme);
+
+    console.log(`${repo.name}.md successfully generated! You'll find your readme in the ${__dirname}/readmes folder.`);
 }
 
 function formatTitle(repoTitle) {
