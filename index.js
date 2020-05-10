@@ -48,7 +48,8 @@ function start() {
                     getRepoInfo(response, repo);
                 })
                 .catch(error => {
-                    throw error;
+                    console.log(`I'm sorry, I wasn't able to find any Github accounts with the username ${githubUser}, please try again.`);
+                    start();
                 });
         })
         .catch(error => {
