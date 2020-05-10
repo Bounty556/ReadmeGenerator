@@ -97,8 +97,13 @@ function inquireRepo(response) {
 function generateReadMe(repo) {
     let readme = '';
 
-    // Generate badges for used language, last commit, and commit activity for this repo
-    readme += `![Language](https://img.shields.io/badge/language-${repo.language.toLowerCase()}-blue) ![LastCommit](https://img.shields.io/github/last-commit/${repo.owner.login}/${repo.name}?style=flat-square) ![CommitActivity](https://img.shields.io/github/commit-activity/m/${repo.owner.login}/${repo.name})\n`;
+    // Check to see if this repo has a language already in it, so we can create a badge for it
+    if (repo.language) {
+        readme += `![Language](https://img.shields.io/badge/language-${repo.language.toLowerCase()}-blue)`;
+    }
+
+    // Generate badges for, last commit, and commit activity for this repo
+    readme += ` ![LastCommit](https://img.shields.io/github/last-commit/${repo.owner.login}/${repo.name}?style=flat-square) ![CommitActivity](https://img.shields.io/github/commit-activity/m/${repo.owner.login}/${repo.name})\n`;
 
     // Add Title
     readme += `\n# ${formatTitle(repo.name)}\n`;
