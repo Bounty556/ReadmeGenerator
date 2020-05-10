@@ -62,9 +62,10 @@ function getRepoInfo(response, repoName) {
     // Remove any spaces from the repoName
     repoName = repoName.replace(/ /g, '').trim();
 
-    // Try to find repo with given name
+    // Try to find repo with given name or URL
     for (repo of response.data) {
-        if (repo.name.toLowerCase() == repoName.toLowerCase()) {
+        if (repo.name.toLowerCase() == repoName.toLowerCase() ||
+            repo.html_url.toLowerCase() == repoName.toLowerCase()) {
             foundRepo = repo;
             break;
         }
