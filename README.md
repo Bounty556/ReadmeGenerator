@@ -32,6 +32,8 @@ node index.js
 4. Input your Github repo name or the exact URL for your repo you wish to generate a README for, as prompted.
 5. After running, a README.md should be generated at the root of the /ReadmeGenerator/ folder, which you can copy/paste into your desired directory for pushing to Github.
 
+[Example](https://drive.google.com/file/d/1Ei9HkHbNvWJj7OQWgCAQziuXikH003Sc/view)
+
 ## License
 MIT License
 
@@ -59,5 +61,4 @@ SOFTWARE.
 Should you have any suggestions for this project, please [create a pull request](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request).
 
 ## Questions
-Inquiries? Send them to:
-    * ![Github](https://avatars1.githubusercontent.com/u/12930451?v=4&s=32) jacobmayday@gmail.com
+Inquiries? Send them to: jacobmayday@gmail.com ![Github](https://avatars1.githubusercontent.com/u/12930451?v=4&s=32)

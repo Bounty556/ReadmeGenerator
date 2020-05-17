@@ -137,8 +137,7 @@ function generateReadMe(repo) {
     readme += `\n## Tests\nInstructions on running automated tests here\n`;
 
     // Questions
-    readme += `\n## Questions\nInquiries? Send them to:
-    * ![Github](${repo.owner.avatar_url}&s=32) {your email}\n`;
+    readme += `\n## Questions\nInquiries? Send them to: {your email} ![Github](${repo.owner.avatar_url}&s=32)\n`;
 
     // Write all content to readme
     writeToFile('README.md', readme);
