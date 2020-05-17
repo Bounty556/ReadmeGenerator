@@ -1,6 +1,7 @@
 const axios = require('axios');
 const inquirer = require('inquirer');
 const fs = require('fs');
+const path = require('path');
 
 const questions = [
     {
@@ -139,10 +140,15 @@ function generateReadMe(repo) {
     // Questions
     readme += `\n## Questions\nInquiries? Send them to: {your email} ![Github](${repo.owner.avatar_url}&s=32)\n`;
 
-    // Write all content to readme
-    writeToFile('README.md', readme);
+    // Make the output folder if it doesn't exist yet
+    if (!fs.existsSync(path.join(__dirname, 'output'))) {
+        fs.mkdirSync(path.join(__dirname, 'output'));
+    }
 
-    console.log(`README.md successfully generated! You'll find your readme in the ${__dirname} folder.`);
+    // Write all content to readme
+    writeToFile('output/README.md', readme);
+
+    console.log(`README.md successfully generated! You'll find your readme in the ${__dirname}/output folder.`);
 }
 
 function formatTitle(repoTitle) {
