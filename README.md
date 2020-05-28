@@ -6,12 +6,12 @@
 The Readme Generator is a handy dandy tool that can be used to speed up your workflow for any project that should have an associated README (all of them). The Readme Generator takes your Github username and repo name or URL, and creates a template README specifically for that project that is partially filled out. The Readme Generator also produced this very README!
 
 ## Table of Contents
-    * [Installation](#installation)
-    * [Usage](#usage)
-    * [License](#license)
-    * [Contributing](#contributing)
-    * [Tests](#tests)
-    * [Questions](#questions)
+- [Installation](#installation)
+- [Usage](#usage)
+- [License](#license)
+- [Contributing](#contributing)
+- [Tests](#tests)
+- [Questions](#questions)
 
 ## Installation
 1. Clone or download the Readme Generator to your computer.
