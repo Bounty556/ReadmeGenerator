@@ -115,12 +115,12 @@ function generateReadMe(repo) {
 
     // Table of contents
     readme += `\n## Table of Contents
-    * [Installation](#installation)
-    * [Usage](#usage)
-    * [License](#license)
-    * [Contributing](#contributing)
-    * [Tests](#tests)
-    * [Questions](#questions)\n`;
+- [Installation](#installation)
+- [Usage](#usage)
+- [License](#license)
+- [Contributing](#contributing)
+- [Tests](#tests)
+- [Questions](#questions)\n`;
     
     // Installation
     readme += `\n## Installation\nInstallation instructions here\n`;
